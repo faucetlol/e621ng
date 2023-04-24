@@ -132,11 +132,11 @@ class TagRelationship < ApplicationRecord
 
       if params[:antecedent_name].present?
         # Split at both space and , to preserve backwards compatibility
-        q = q.where(antecedent_name: params[:antecedent_name].split(/[ ,]/).first(100))
+        q = q.where(antecedent_name: params[:antecedent_name].downcase.split(/[ ,]/).first(100))
       end
 
       if params[:consequent_name].present?
-        q = q.where(consequent_name: params[:consequent_name].split(/[ ,]/).first(100))
+        q = q.where(consequent_name: params[:consequent_name].downcase.split(/[ ,]/).first(100))
       end
 
       if params[:status].present?
